@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony & Jacqueline - Nuestra Gran Noticia</title>
+    <!-- Fuentes premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="no-scroll">
+
+    <audio id="bg-music" loop>
+        <source src="assets/video/tu_musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PANTALLA DE ENTRADA: CARTA ANIMADA -->
+    <div id="entry-gate" class="entry-gate">
+        <div class="scene">
+            <div class="envelope-wrapper" id="envelope-wrapper">
+                <div class="envelope">
+                    <!-- Parte trasera del sobre -->
+                    <div class="envelope-back"></div>
+                    
+                    <!-- Carta interior que se deslizará hacia arriba -->
+                    <div class="letter" id="letter">
+                        <div class="letter-content">
+                            <h1 class="letter-initials">A & J</h1>
+                            <div class="letter-divider"></div>
+                            <p class="letter-names">ANTHONY & JACQUELINE</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Frente del sobre (bolsillo inferior) -->
+                    <div class="envelope-front"></div>
+                    
+                    <!-- Solapa superior (se abre) -->
+                    <div class="envelope-flap" id="envelope-flap"></div>
+                    
+                    <!-- Sello de cera -->
+                    <div class="wax-seal" id="wax-seal">
+                        <span>A&J</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="entry-controls" id="entry-controls">
+            <p class="entry-note">Estás invitado a compartir nuestra gran noticia</p>
+            <div class="btn-group">
+                <button class="btn btn-glass" id="btn-enter-music">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                    Con Música
+                </button>
+                <button class="btn btn-glass-outline" id="btn-enter-nomusic">
+                    Sin Música
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="content-wrapper">
+        
+        <!-- EFECTO PARTÍCULAS / FIREFLIES -->
+        <div class="particles-container" id="particles-container"></div>
+        <!-- Toggle de música -->
+        <button id="music-toggle-btn" class="music-toggle-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-music">
+                <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+            </svg>
+        </button>
+
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <div class="glass-hero-card fade-up">
+                <p class="hero-date">20 JUN 2026</p>
+                <h1 class="hero-names">Anthony <span class="gold-accent">&</span> Jacqueline</h1>
+                <p class="hero-subtitle">NUESTRA GRAN NOTICIA</p>
+                <div class="gold-line"></div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <p>Descubre más</p>
+                <div class="mouse-icon"><div class="wheel"></div></div>
+            </div>
+        </header>
+
+        <!-- CITA -->
+        <section class="section-quote glass-section fade-up">
+            <div class="quote-content">
+                <p class="quote-text">"Hay momentos en la vida que son especiales por sí solos. Compartirlos con las personas que más queremos, los hace inolvidables."</p>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="ornament-divider fade-up">
+            <div class="ornament-line"></div>
+            <span class="ornament-diamond">◆ · ◆ · ◆</span>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- CUENTA REGRESIVA -->
+        <section class="section-countdown fade-up">
+            <h2 class="section-title">El Momento Esperado</h2>
+            <div class="countdown-glass">
+                <div class="cd-box"><span id="cd-days">00</span><p>DÍAS</p></div>
+                <div class="cd-divider">:</div>
+                <div class="cd-box"><span id="cd-hours">00</span><p>HORAS</p></div>
+                <div class="cd-divider">:</div>
+                <div class="cd-box"><span id="cd-minutes">00</span><p>MINUTOS</p></div>
+                <div class="cd-divider">:</div>
+                <div class="cd-box"><span id="cd-seconds">00</span><p>SEGUNDOS</p></div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="ornament-divider fade-up">
+            <div class="ornament-line"></div>
+            <span class="ornament-diamond">◆ · ◆ · ◆</span>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- CEREMONIA -->
+        <section class="section-details fade-up">
+            <div class="glass-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="9" cy="12" r="5" /><circle cx="15" cy="12" r="5" />
+                    </svg>
+                </div>
+                <h2 class="card-title">La Cena Especial</h2>
+                <div class="card-info">
+                    <p class="info-highlight">20 de Junio, 2:00 P.M.</p>
+                    <p class="info-text">Restaurante La Bistecca<br>C.C. Real Plaza Salaverry, 4to piso<br>Lima, Perú</p>
+                </div>
+                <a href="https://goo.gl/maps/bisteccasalaverry" target="_blank" class="btn btn-gold">Cómo llegar</a>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="ornament-divider fade-up">
+            <div class="ornament-line"></div>
+            <span class="ornament-diamond">◆ · ◆ · ◆</span>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- RSVP -->
+        <section class="section-rsvp fade-up">
+            <div class="rsvp-simple-wrap">
+                <h2 class="rsvp-simple-title">Confirmar Asistencia</h2>
+                <p class="rsvp-simple-sub">Es importante que confirmes tu asistencia</p>
+                <button class="btn btn-gold rsvp-open-btn" id="rsvp-toggle-btn">Confirmar asistencia</button>
+                <div class="rsvp-form-wrap hidden" id="rsvp-form-wrap">
+                    <form id="rsvp-form" class="dark-form">
+                        <div class="form-row">
+                            <input type="text" id="nombre" name="nombre" required placeholder="Nombre">
+                            <input type="text" id="apellido" name="apellido" required placeholder="Apellido">
+                        </div>
+                        <div class="radio-glass-group">
+                            <label class="radio-glass">
+                                <input type="radio" name="asistencia" value="Sí" required>
+                                <span class="radio-content">Sí, asistiré</span>
+                            </label>
+                            <label class="radio-glass">
+                                <input type="radio" name="asistencia" value="No">
+                                <span class="radio-content">No podré</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-gold" id="submit-btn" style="width: 100%; margin-top: 20px;">Confirmar</button>
+                        <div id="form-message" class="form-message hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="ornament-divider fade-up">
+            <div class="ornament-line"></div>
+            <span class="ornament-diamond">◆ · ◆ · ◆</span>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- RETRATOS -->
+        <section class="section-retratos fade-up">
+            <div class="retratos-header">
+                <div class="retratos-infinity">∞</div>
+                <h2 class="retratos-title">Retratos de Nuestro Amor</h2>
+                <p class="retratos-subtitle">Un minuto, un segundo, un instante que queda en la eternidad</p>
+            </div>
+
+            <div class="retratos-carousel-wrapper">
+                <div class="retratos-track" id="retratos-track">
+                    <div class="retrato-item side">
+                        <img src="assets/img/3.jpg" alt="Retrato 3" class="retrato-img">
+                    </div>
+                    <div class="retrato-item center">
+                        <img src="assets/img/1.jpg" alt="Retrato 1" class="retrato-img">
+                    </div>
+                    <div class="retrato-item side">
+                        <img src="assets/img/2.jpg" alt="Retrato 2" class="retrato-img">
+                    </div>
+                </div>
+                <div class="retratos-dots" id="retratos-dots">
+                    <span class="retrato-dot active" data-index="0"></span>
+                    <span class="retrato-dot" data-index="1"></span>
+                    <span class="retrato-dot" data-index="2"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="ornament-divider fade-up">
+            <div class="ornament-line"></div>
+            <span class="ornament-diamond">◆ · ◆ · ◆</span>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- DRESS CODE -->
+        <section class="section-dresscode fade-up">
+            <div class="glass-card small-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">Dress Code</h2>
+                <p class="info-text">Elegante</p>
+                <p class="info-subtext">Te sugerimos vestir con traje formal o vestido de noche.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <h2 class="footer-initials">A & J</h2>
+            <div class="gold-line" style="width: 40px; margin: 15px auto;"></div>
+            <p>ANTHONY & JACQUELINE</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
