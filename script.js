@@ -216,45 +216,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const formMessage = document.getElementById('form-message');
 
     // URL DEL GOOGLE APPS SCRIPT
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGDvybg9QSutTAe5nn_XiMPzlM8FY1cDX3nl4rn-Sc7W41h_rsFQX_24cUPRzGkcc/exec';
 
     if (form) {
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            if (GOOGLE_SCRIPT_URL.includes('TU_SCRIPT_ID_AQUI')) {
-                formMessage.textContent = 'Falta conectar tu Google Sheet. (Ver instrucciones)';
+            const nombre     = document.getElementById('nombre').value.trim();
+            const apellido   = document.getElementById('apellido').value.trim();
+            const asistencia = form.querySelector('input[name="asistencia"]:checked')?.value;
+
+            if (!nombre || !apellido || !asistencia) {
+                formMessage.textContent = 'Por favor completa todos los campos.';
                 formMessage.className = 'form-message error';
                 formMessage.classList.remove('hidden');
                 return;
             }
 
-            const formData = new FormData(form);
-            const data = new URLSearchParams(formData);
-
             submitBtn.disabled = true;
             submitBtn.innerHTML = 'Enviando...';
             formMessage.classList.add('hidden');
 
-            try {
-                await fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    body: data,
-                    mode: 'no-cors' 
-                });
+            // ---- MÉTODO IFRAME (100% compatible con file:// y sin CORS) ----
+            // 1. Crear iframe oculto para recibir la respuesta sin navegar la página
+            const iframeName = 'rsvp-iframe-' + Date.now();
+            const iframe = document.createElement('iframe');
+            iframe.name = iframeName;
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
 
-                formMessage.textContent = '¡Gracias por confirmar!';
+            // 2. Crear formulario oculto que apunta al iframe
+            const hiddenForm = document.createElement('form');
+            hiddenForm.method = 'GET';
+            hiddenForm.action = GOOGLE_SCRIPT_URL;
+            hiddenForm.target = iframeName;
+            hiddenForm.style.display = 'none';
+
+            // 3. Añadir los campos
+            const fields = { nombre, apellido, asistencia };
+            for (const [key, value] of Object.entries(fields)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = value;
+                hiddenForm.appendChild(input);
+            }
+
+            document.body.appendChild(hiddenForm);
+            hiddenForm.submit(); // ← esto envía los datos al Google Script
+
+            // 4. Mostrar éxito después de 2s y limpiar
+            setTimeout(() => {
+                formMessage.textContent = '¡Gracias por confirmar tu asistencia! 🎉';
                 formMessage.className = 'form-message success';
                 formMessage.classList.remove('hidden');
                 form.reset();
-            } catch (error) {
-                formMessage.textContent = 'Error al enviar. Intenta de nuevo.';
-                formMessage.className = 'form-message error';
-                formMessage.classList.remove('hidden');
-            } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Confirmar';
-            }
+                submitBtn.innerHTML = 'Enviar Confirmación';
+
+                // Limpiar iframe y form ocultos
+                document.body.removeChild(iframe);
+                document.body.removeChild(hiddenForm);
+            }, 2000);
         });
     }
 

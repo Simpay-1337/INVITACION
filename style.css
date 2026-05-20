@@ -741,13 +741,29 @@ section {
     letter-spacing: 3px;
 }
 
-.rsvp-form-wrap {
-    margin-top: 30px;
-    text-align: left;
-    transition: all 0.4s ease;
+/* Formulario Inline */
+.rsvp-inline-form {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.6s ease, margin-top 0.6s ease;
 }
 
-.rsvp-card { text-align: left; max-width: 500px; }
+.rsvp-inline-form.hidden {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+}
+
+/* Tarjeta formulario siempre visible */
+.rsvp-form-card {
+    margin-top: 30px;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .dark-form { display: flex; flex-direction: column; gap: 20px; }
 .form-row { display: flex; gap: 15px; }
